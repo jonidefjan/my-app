@@ -1,11 +1,12 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import Hello from './components/Hello';
+import "antd/dist/antd.css";
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
+import Home from './components/Home';
 
 ReactDOM.render(
-  <Hello nome="Jonatas Mattos" nivelDeEntusiasmo={3} />,
+  <Home />,
   document.getElementById('root') as HTMLElement
 );
 registerServiceWorker();

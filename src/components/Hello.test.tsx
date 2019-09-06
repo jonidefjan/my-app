@@ -3,8 +3,9 @@ import * as enzyme from 'enzyme';
 import Hello from './Hello';
 
 it('renderiza o texto correto quando nenhum nível de entusiasmo é dado', () =>{
-    const hello = enzyme.shallow( <Hello nome='Jonatas Mattos' /> );
-    expect(hello.find(".saudacao").text()).toEqual('Eai Jonatas Mattos!')
+    expect(() => {
+        enzyme.shallow(<Hello nome='Jonatas Mattos' nivelDeEntusiasmo={0} />);
+    }).toThrow();
 });
 
 it('renderiza o texto correto quando 1 nível de entusiasmo é dado', () =>{

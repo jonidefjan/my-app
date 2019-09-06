@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './Hello.css'
 
+
 export interface Props {
     nome: string;
     nivelDeEntusiasmo?:number; 
@@ -13,7 +14,7 @@ interface State {
 class Hello extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
-        this.state = { entusiasmoAtual: props.nivelDeEntusiasmo || 1 };
+        this.state = { entusiasmoAtual: props.nivelDeEntusiasmo || 0};
     }
 
     noIncremento = () => this.atualizaEntusiasmo(this.state.entusiasmoAtual + 1);
@@ -28,6 +29,7 @@ class Hello extends React.Component<Props, State> {
 
         return (
             <div className="hello">
+
                 <div className="saudacao">
                     Eai {nome + marcasDeExclamacao(this.state.entusiasmoAtual)}
                 </div>
