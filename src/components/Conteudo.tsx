@@ -42,7 +42,7 @@ export default class Conteudo extends React.Component {
 
                             <Menu.Item key="2">
                                 <Icon type="book" />
-                                <span className="nav-text">Livraria</span>
+                                <span className="nav-text">Livros</span>
                                 <Link to="/livros" />
                             </Menu.Item>
 
@@ -52,13 +52,6 @@ export default class Conteudo extends React.Component {
                                 </Badge>
                                 <span className="nav-text">Carrinho</span>
                                 <Link to="/carrinho" />
-                            </Menu.Item>
-
-                            <Menu.Item key="4">
-
-                                    <Icon type="idcard" />
-                                <span className="nav-text">Carrinho</span>
-                                <Link to="/card" />
                             </Menu.Item>
 
                         </Menu>
