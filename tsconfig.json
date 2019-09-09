@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+      "experimentalDecorators": true,
     "baseUrl": ".",
     "outDir": "build/dist",
     "module": "esnext",
@@ -9,7 +10,7 @@
     "allowJs": true,
     "jsx": "react",
     "moduleResolution": "node",
-    "rootDir": "src",
+    "rootDir": "../",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
@@ -18,6 +19,7 @@
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true
+    
   },
   "exclude": [
     "node_modules",
