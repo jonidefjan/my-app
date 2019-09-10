@@ -2,18 +2,19 @@ import { action, observable } from 'mobx';
 
 class CarrinhoStore {
 
-    @observable counter= 0;
+    @observable quantidadeTotal=0;
 
     @action increase = () => {
-        this.counter++;
+        this.quantidadeTotal++;
+        console.log(this.quantidadeTotal)
     };
 
     @action decline = () => {
-        this.counter--;
-        if (this.counter < 0) {
-            this.counter = 0;
+        this.quantidadeTotal--;
+        if (this.quantidadeTotal < 0) {
+            this.quantidadeTotal = 0;
         }else{
-            this.counter
+            this.quantidadeTotal
         }
         
     };

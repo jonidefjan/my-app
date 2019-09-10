@@ -1,4 +1,4 @@
-import "./livrosData.json"
+import "./livrosData.ts/index.js"
 import { observable } from 'mobx';
 
 class LivrosStore {

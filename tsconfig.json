@@ -18,15 +18,8 @@
     "importHelpers": true,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
-<<<<<<< HEAD
-    "noUnusedLocals": true,
-    "experimentalDecorators":true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true
-=======
     "noUnusedLocals": true
     
->>>>>>> origin/master
   },
   "exclude": [
     "node_modules",

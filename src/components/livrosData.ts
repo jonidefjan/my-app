@@ -1,4 +1,4 @@
-[
+export const livros = [
     {
       "id": "R3C0",
       "titulo": "O Hobbit",
@@ -81,7 +81,7 @@
     {
       "id": "R3C8",
       "titulo": "Não Conta Lá Em Casa",
-      "autor": "Fran,André, Fran,André",
+      "autor": "Fran,André",
       "preco": "40.00",
       "capa": "https://images-na.ssl-images-amazon.com/images/I/51oolz82n8L.jpg",
       "description": "Escrito por André Fran, um dos quatro apresentadores do programa exibido pela Multishow, Não conta lá em casa relata viagens para os mais excepcionais destinos do mundo. Destinos como Tuvalu, uma ilha-país que está, literalmente, prestes a sumir do mapa - devido aos efeitos do aquecimento global - e países que estão em situação de conflito, como Somália e Etiópia. Uma obra repleta de fotos fascinantes, histórias que divertem e emocionam.",
@@ -90,7 +90,7 @@
     {
       "id": "R3C9",
       "titulo": "Amor & Gelato",
-      "autor": "Welch,Jenna Evans, Welch,Jenna Evans",
+      "autor": "Welch,Jenna Evans",
       "preco": "40.00",
       "capa": "https://images-na.ssl-images-amazon.com/images/I/51FPAe0eA8L.jpg",
       "description": "Um verão na Itália, uma antiga história de amor e um segredo de família. Depois da morte da mãe, Lina fica com a missão de realizar um último pedido: ir até a Itália para conhecer o pai. Do dia para a noite, ela se vê na famosa paisagem da Toscana, morando em uma casa localizada no mesmo terreno de um cemitério memorial de soldados americanos da Segunda Guerra Mundial, com um homem que nunca tinha ouvido falar. ",

@@ -47,7 +47,7 @@ export default class Conteudo extends React.Component {
                             </Menu.Item>
 
                             <Menu.Item key="3">
-                                <Badge count={carrinhoStore.counter} style={{ backgroundColor: '#87d068' }}>
+                                <Badge count={carrinhoStore.quantidadeTotal} style={{ backgroundColor: '#87d068' }}>
                                     <Icon type="shopping-cart" />
                                 </Badge>
                                 <span className="nav-text">Carrinho</span>
