@@ -3,16 +3,29 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
     "antd": "^3.23.1",
+=======
+    "antd": "^3.23.2",
+    "axios": "^0.19.0",
+    "cors": "^2.8.5",
+>>>>>>> origin/master
     "mobx": "^5.13.0",
     "mobx-persist": "^0.4.1",
     "mobx-react": "^6.1.3",
+    "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+<<<<<<< HEAD
     "react-native": "^0.60.5",
     "react-router": "^5.0.1",
     "react-scripts-ts": "^4.0.8",
     "typescript": "3.6.2"
+=======
+    "react-router": "^5.0.1",
+    "react-router-dom": "^5.0.1",
+    "react-scripts-ts": "^4.0.8"
+>>>>>>> origin/master
   },
   "scripts": {
     "start": "react-scripts-ts start",
@@ -27,6 +40,7 @@
     "@types/node": "^12.7.2",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
+    "@types/react-router-dom": "^4.3.5",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "react-test-renderer": "^16.9.0",
@@ -37,5 +51,21 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
+<<<<<<< HEAD
   ]
+=======
+  ],
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonidefjan/my-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonidefjan/my-app/issues"
+  },
+  "homepage": "https://github.com/jonidefjan/my-app#readme"
+>>>>>>> origin/master
 }
