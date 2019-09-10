@@ -13,7 +13,8 @@
     "react-dom": "^16.9.0",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
-    "react-scripts-ts": "^4.0.8"
+    "react-scripts-ts": "^4.0.8",
+    "start": "^5.1.0"
   },
   "scripts": {
     "start": "react-scripts-ts start",

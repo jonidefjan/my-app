@@ -2,7 +2,7 @@ import * as React from 'react'
 import ButtonGroup from 'antd/lib/button/button-group';
 import { Button, Icon } from 'antd';
 import { observer } from 'mobx-react'
-import { carrinhoStore } from "./CarinhoStore";
+import { carrinhoStore } from "./stores/CarinhoStore";
 
 
 

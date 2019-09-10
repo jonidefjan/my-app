@@ -1,7 +1,7 @@
 import { Layout, Menu, Icon, Badge } from 'antd';
 import * as React from 'react'
 import { observer } from 'mobx-react'
-import { carrinhoStore } from "./CarinhoStore";
+import { carrinhoStore } from "./stores/CarinhoStore";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Home from './Home'
 import Carrinho from './Carrinho'
