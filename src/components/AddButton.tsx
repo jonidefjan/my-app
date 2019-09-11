@@ -10,17 +10,19 @@ import { carrinhoStore } from "./CarinhoStore";
 
 @observer
 export default class AddButton extends React.Component {
+    constructor(props: string){
+        super(props)
 
-    
+                }
 
     render() {
         return (
             <div>
                 <ButtonGroup >
-                    <Button onClick={() => carrinhoStore.decline()} >
+                    <Button onClick={(livroId) => carrinhoStore.decline(livroId)} >
                         <Icon type="minus" />
                     </Button>
-                    <Button onClick={() => carrinhoStore.increase()}>
+                    <Button onClick={(livroId) => carrinhoStore.increase(livroId)}>
                         <Icon type="plus" />
                     </Button>
                 </ButtonGroup>
