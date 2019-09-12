@@ -3,6 +3,7 @@ import ButtonGroup from 'antd/lib/button/button-group';
 import { Button, Icon } from 'antd';
 import { observer } from 'mobx-react'
 import { carrinhoStore } from "./CarinhoStore";
+import { observable } from 'mobx';
 
 
 
@@ -10,16 +11,13 @@ import { carrinhoStore } from "./CarinhoStore";
 
 @observer
 export default class AddButton extends React.Component {
-    constructor(props: string){
-        super(props)
-
-                }
+    @observable livroId:any;
 
     render() {
         return (
             <div>
                 <ButtonGroup >
-                    <Button onClick={(livroId) => carrinhoStore.decline(livroId)} >
+                    <Button onClick={() => carrinhoStore.decline(this.livroId)} >
                         <Icon type="minus" />
                     </Button>
                     <Button onClick={(livroId) => carrinhoStore.increase(livroId)}>

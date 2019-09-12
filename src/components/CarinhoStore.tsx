@@ -1,17 +1,19 @@
 import { action, observable } from 'mobx';
-
+import {livros} from './livrosData'
 
 
 class CarrinhoStore {
 
     @observable quantidadeTotal=0;
     @observable precoTotal:number;
-    @observable livroId:string
+    @observable livroId:any
     
-
+    quantidadeId = livros.find(function(qnt, livroId:any){
+        return qnt.id == livroId
+    })
 
     @action increase = (livroId:any) => {
-        {console.log()}
+        {console.log(livroId)}
         this.quantidadeTotal++;
         console.log(this.quantidadeTotal)
     };

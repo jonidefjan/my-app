@@ -1,8 +1,14 @@
 import * as React from 'react'
-import { Drawer, Button } from 'antd';
+import { Drawer, Button, Card } from 'antd';
+import AddButton from './AddButton';
+import { Link } from 'react-router-dom';
+import Meta from 'antd/lib/card/Meta';
+import { livros } from './livrosData'
+import { observable } from 'mobx';
 
 export default class CartDrawer extends React.Component {
-  state = { visible: false };
+  @observable state = { visible: false };
+
 
   showDrawer = () => {
     this.setState({
@@ -23,15 +29,40 @@ export default class CartDrawer extends React.Component {
           Open
         </Button>
         <Drawer
-          title="Basic Drawer"
+          title="Carrinho"
           placement="right"
           closable={false}
           onClose={this.onClose}
           visible={this.state.visible}
         >
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
+          <div>
+            {livros.map(function (book) {
+              if (book.quantidade > 0) {
+
+                return (
+                  <div>
+                    <Card
+                      hoverable
+                      style={{ width: "100hv" }}
+                      cover={<img alt={book.titulo} src={book.capa} />}
+                      key={book.id}
+                    >
+                      <Link to={`livros/${book.titulo}`}>
+                        <Meta title={book.titulo} description={'R$: ' + book.preco +' '+ book.quantidade} />
+                      </Link>
+                      <br />
+                      <AddButton key={book.id} />
+                    </Card>
+                    <br />
+                  </div>
+                )
+              } else {
+                return null
+              }
+
+            })}
+          </div>
+
         </Drawer>
       </div>
     );

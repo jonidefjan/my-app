@@ -69,7 +69,7 @@ export default class Conteudo extends React.Component {
                     </Sider>
                     <Layout>
 
-                        <Header style={{ background: '#007cbf', paddingLeft: 50, fontSize: 24, color: '#fff', textDecoration: 'none', cursor: 'pointer' }} >
+                        <Header style={{ background: 'rgba(0, 21, 41)', paddingLeft: 50, fontSize: 24, color: '#fff', textDecoration: 'none', cursor: 'pointer' }} >
                             E-Book Store
                         </Header>
 

@@ -34,10 +34,10 @@ export default class Carrinho extends React.Component {
                                 cover={<img alt={book.titulo} src={book.capa} />}
                             >
                                 <Link to={`livros/${book.titulo}`}>
-                                    <Meta title={book.titulo} description={book.preco} />
+                                    <Meta title={ book.titulo} description={book.preco} />
                                 </Link>
                                 <br />
-                                <AddButton key={book.id} id={book.id}/>
+                                <AddButton key={book.id}/>
                             </Card>
 
                             <br />
