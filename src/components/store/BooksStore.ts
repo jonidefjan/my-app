@@ -1,6 +1,6 @@
 import { observable } from 'mobx'
 import { create, persist } from 'mobx-persist'
-import {AsyncStorage} from 'react-native'
+
 
 
 class SomeItem {
@@ -18,7 +18,7 @@ class SomeStore {
 }
 
 const hydrate = create({
-    storage: AsyncStorage,   // or AsyncStorage in react-native.
+    storage: localStorage,   // or AsyncStorage in react-native.
                             // default: localStorage
     jsonify: true  // if you use AsyncStorage, here shoud be true
                     // default: true

@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom';
 @observer
 export default class Carrinho extends React.Component {
 
-    @observable livroIds: [];
+    @observable livroIds = new Array()
 
 
 
@@ -25,12 +25,15 @@ export default class Carrinho extends React.Component {
             <div style={{ background: '#ECECEC', padding: '30px' }}>
 
                 <Row gutter={16} >
-                    {livros.map(book => (
+                    {livros.map(book => {
+                        this.livroIds.push(book.id)
+                        console.log(this.livroIds)
+                        return(
                         <Col key={book.id} id={book.id} span={6}>
 
                             <Card
                                 hoverable
-                                style={{ width: 240 }}
+                                style={{ width: 200 }}
                                 cover={<img alt={book.titulo} src={book.capa} />}
                             >
                                 <Link to={`livros/${book.titulo}`}>
@@ -42,7 +45,7 @@ export default class Carrinho extends React.Component {
 
                             <br />
                         </Col>
-                    ))}
+                    )})}
                 </Row>
 
 

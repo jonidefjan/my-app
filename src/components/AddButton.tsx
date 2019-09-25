@@ -2,25 +2,26 @@ import * as React from 'react'
 import ButtonGroup from 'antd/lib/button/button-group';
 import { Button, Icon } from 'antd';
 import { observer } from 'mobx-react'
-import { carrinhoStore } from "./CarinhoStore";
-import { observable } from 'mobx';
+import { carrinhoStore } from "./store/CarinhoStore";
 
 
-
+const decline = () =>{
+    alert("aaaaa")
+}
 
 
 @observer
 export default class AddButton extends React.Component {
-    @observable livroId:any;
+   
 
     render() {
         return (
             <div>
                 <ButtonGroup >
-                    <Button onClick={() => carrinhoStore.decline(this.livroId)} >
+                    <Button onClick={decline} >
                         <Icon type="minus" />
                     </Button>
-                    <Button onClick={(livroId) => carrinhoStore.increase(livroId)}>
+                    <Button onClick={() => carrinhoStore.increase()}>
                         <Icon type="plus" />
                     </Button>
                 </ButtonGroup>
