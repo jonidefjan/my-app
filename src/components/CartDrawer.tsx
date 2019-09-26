@@ -1,13 +1,14 @@
 import * as React from 'react'
-import { Drawer, Button, Card } from 'antd';
-import AddButton from './AddButton';
-import { Link } from 'react-router-dom';
-import Meta from 'antd/lib/card/Meta';
-import { livros } from './livrosData'
+import { Drawer, Button } from 'antd';
 import { observable } from 'mobx';
+import ItensCart from './ItensCart';
+
+
+
 
 export default class CartDrawer extends React.Component {
   @observable state = { visible: false };
+  
 
 
   showDrawer = () => {
@@ -35,33 +36,8 @@ export default class CartDrawer extends React.Component {
           onClose={this.onClose}
           visible={this.state.visible}
         >
-          <div>
-            {livros.map(function (book) {
-              if (book.quantidade > 0) {
 
-                return (
-                  <div>
-                    <Card
-                      hoverable
-                      style={{ width: "100hv" }}
-                      cover={<img alt={book.titulo} src={book.capa} />}
-                      key={book.id}
-                    >
-                      <Link to={`livros/${book.titulo}`}>
-                        <Meta title={book.titulo} description={'R$: ' + book.preco +' '+ book.quantidade} />
-                      </Link>
-                      <br />
-                      <AddButton key={book.id} />
-                    </Card>
-                    <br />
-                  </div>
-                )
-              } else {
-                return null
-              }
-
-            })}
-          </div>
+          <ItensCart/>
 
         </Drawer>
       </div>
