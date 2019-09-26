@@ -1,44 +1,39 @@
 import * as React from 'react'
-
 import { Card, Col, Row } from 'antd';
 import Meta from 'antd/lib/card/Meta';
 import AddButton from './AddButton';
 import { livros } from './livrosData';
-import { observer } from 'mobx-react';
-import { observable } from 'mobx';
-import { Link } from 'react-router-dom';
 
 
+type LinkProps = {
+    match: any;
+    location:any;
+    history: any;
+}
 
-
-
-@observer
-export default class Carrinho extends React.Component {
-
-    @observable livroIds = new Array()
-
-
-
+export default class Livro extends React.Component<LinkProps>{
     render() {
+        const {
+            match,
+            location,
+            history,
+            ...props
+        } = this.props;
         return (
 
-            <div style={{ background: '#ECECEC', padding: '30px' }}>
+            <div {...props}style={{ background: '#ECECEC', padding: '30px' }}>
 
                 <Row gutter={16} >
                     {livros.map(book => {
-                        this.livroIds.push(book.id)
-                        console.log(this.livroIds)
+                        
                         return(
                         <Col key={book.id} id={book.id} span={6}>
 
                             <Card
                                 hoverable
-                                style={{ width: 200 }}
                                 cover={<img alt={book.titulo} src={book.capa} />}
                             >
-                                <Link to={`livros/${book.id}`}>
                                     <Meta title={ book.titulo} description={book.preco} />
-                                </Link>
                                 <br />
                                 <AddButton key={book.id}/>
                             </Card>
@@ -53,12 +48,4 @@ export default class Carrinho extends React.Component {
             </div>
         )
     }
-
-    addToCart = (idLivro: string) => {
-
-        return (null)
-    };
 }
-
-
-

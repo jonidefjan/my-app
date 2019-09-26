@@ -1,4 +1,4 @@
-import { action, observable } from 'mobx';
+import { action, observable, computed } from 'mobx';
 import { livros } from '../livrosData'
 import { persist } from 'mobx-persist';
 
@@ -7,6 +7,7 @@ import { persist } from 'mobx-persist';
 class CarrinhoStore {
 
     @persist @observable quantidadeTotal=0;
+    
     @persist @observable precoTotal:number;
     @observable livrosId = new Array()
     @observable livrosTitle = new Array()
@@ -15,6 +16,8 @@ class CarrinhoStore {
     @observable livrosCapa = new Array()
     @observable livrosDescription = new Array()
     @observable livrosQuantidade = new Array()
+
+    @observable reducer = (accumulator:number, currentValue:number) => accumulator + currentValue;
     
     quantidadeId = livros.map(livro =>{
         this.livrosId.push(livro.id)
@@ -26,10 +29,12 @@ class CarrinhoStore {
         this.livrosQuantidade.push(livro.quantidade)
     })
 
+    @observable qnt = this.livrosQuantidade.reduce(this.reducer)
+    @observable price = this.livrosPreco.reduce(this.reducer)
+
     
 
     @action increase = () => {
-        
         this.quantidadeTotal++;
     };
 
@@ -43,6 +48,11 @@ class CarrinhoStore {
         }
         
     };
+
+    @computed get total(){
+        
+        return 
+    }
 
 }
 

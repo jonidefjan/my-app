@@ -5,9 +5,7 @@ import { observer } from 'mobx-react'
 import { carrinhoStore } from "./store/CarinhoStore";
 
 
-const decline = () =>{
-    alert("aaaaa")
-}
+
 
 
 @observer
@@ -18,7 +16,7 @@ export default class AddButton extends React.Component {
         return (
             <div>
                 <ButtonGroup >
-                    <Button onClick={decline} >
+                    <Button onClick={() => carrinhoStore.increase()} >
                         <Icon type="minus" />
                     </Button>
                     <Button onClick={() => carrinhoStore.increase()}>
