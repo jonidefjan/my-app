@@ -16,7 +16,7 @@ export default class AddButton extends React.Component {
         return (
             <div>
                 <ButtonGroup >
-                    <Button onClick={() => carrinhoStore.increase()} >
+                    <Button onClick={() => carrinhoStore.decline()} >
                         <Icon type="minus" />
                     </Button>
                     <Button onClick={() => carrinhoStore.increase()}>
