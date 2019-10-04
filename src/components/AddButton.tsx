@@ -5,21 +5,23 @@ import { observer } from 'mobx-react'
 import { carrinhoStore } from "./store/CarinhoStore";
 
 
-
+interface ButtonProps {
+    idLivro:string
+} 
 
 
 @observer
-export default class AddButton extends React.Component {
+export default class AddButton extends React.Component<ButtonProps>{
    
 
     render() {
         return (
             <div>
                 <ButtonGroup >
-                    <Button onClick={() => carrinhoStore.decline()} >
+                    <Button onClick={() => carrinhoStore.decline(this.props.idLivro)} >
                         <Icon type="minus" />
                     </Button>
-                    <Button onClick={() => carrinhoStore.increase()}>
+                    <Button onClick={() => carrinhoStore.increase(this.props.idLivro)}>
                         <Icon type="plus" />
                     </Button>
                 </ButtonGroup>

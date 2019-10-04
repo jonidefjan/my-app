@@ -1,55 +1,69 @@
 import * as React from 'react'
-import { Card, Col } from 'antd';
-import Meta from 'antd/lib/card/Meta';
+import { Card, Row, Col, Breadcrumb } from 'antd';
+
 import AddButton from './AddButton';
 import { livros } from './livrosData';
-import { Route, RouteComponentProps } from 'react-router-dom'
+import { RouteComponentProps, Link } from 'react-router-dom'
+import Meta from 'antd/lib/card/Meta';
 
 
-interface RouteInfo {
-    value: string;
-    book:any 
-    
+interface Params {
+    id: string;
 }
 
 
+interface livroProps extends RouteComponentProps<Params> {
+    value: string;
+    book: any;
+}
 
 function find(id: string) {
     return livros.find(book => book.id === id)
 }
 
-export default class Livro extends React.Component<RouteComponentProps, RouteInfo,Route >{
-    constructor(props: any) {
-        super(props);
-        this.state = {
-            value: '',
-            book: find(this.props.match.params.id)
-        
-        }
-        console.log(props)
-    }
-    render() {
+export const Livro = (props: livroProps) => {
+    const book = find(props.match.params.id)
+    console.log(props)
+    return (
 
-        return (
+        <div style={{ background: '#ECECEC', padding: '30px' }} key={book!.id}>
 
-            <div style={{ background: '#ECECEC', padding: '30px' }}>
+            <Breadcrumb>
+                <Breadcrumb.Item>
+                    <Link to="/">Home</Link>
+                </Breadcrumb.Item>
+                <Breadcrumb.Item>
+                    <Link to="/livros">Livros</Link>
+                </Breadcrumb.Item>
+                <Breadcrumb.Item>{book!.titulo}</Breadcrumb.Item>
+            </Breadcrumb>
 
+            <br/>
 
-                <Col key={this.state.book.id} id={this.state.book.id} span={6}>
-
+            <Row gutter={16}>
+                <Col span={8}>
                     <Card
-                        hoverable
-                        cover={<img alt={this.state.book.titulo} src={this.state.book.capa} />}
+
+                        bordered={true}
+                        cover={<img alt={book!.titulo} src={book!.capa} />}
                     >
-                        <Meta title={this.state.book.titulo} description={this.state.book.idpreco} />
+
+
+                    </Card>
+                </Col>
+                <Col span={12}>
+                    <Card title={book!.titulo} bordered={true}>
+                        <Meta title={book!.autor} description={book!.description} />
+                        <br/>
+                        <Meta title={'R$: '+book!.preco.toFixed(2)} description={book!.quantidade}/>
                         <br />
-                        <AddButton key={this.state.book.id} />
+                        <AddButton key={book!.id} idLivro={book!.id}/>
                     </Card>
 
-                    <br />
                 </Col>
 
-            </div>
-        )
-    }
+            </Row>
+        </div>
+    )
+
 }

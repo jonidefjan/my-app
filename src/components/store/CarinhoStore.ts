@@ -7,10 +7,13 @@ import { persist } from 'mobx-persist';
 class CarrinhoStore {
 
     @persist @observable quantidadeTotal=0;
-    
+    @persist @observable quantidadeParcial=0;
+
+    @persist @observable added=false;
+
     @persist @observable precoTotal:number;
-    @observable livrosId = new Array()
-    @observable livrosTitle = new Array()
+    @persist @observable livrosId = new Array()
+    @persist @observable itensCart = new Array()
     @observable livrosAutor = new Array()
     @observable livrosPreco = new Array()
     @observable livrosCapa = new Array()
@@ -20,8 +23,6 @@ class CarrinhoStore {
     @observable reducer = (accumulator:number, currentValue:number) => accumulator + currentValue;
     
     quantidadeId = livros.map(livro =>{
-        this.livrosId.push(livro.id)
-        this.livrosTitle.push(livro.titulo)
         this.livrosAutor.push(livro.autor)
         this.livrosPreco.push(livro.preco)
         this.livrosCapa.push(livro.capa)
@@ -29,30 +30,61 @@ class CarrinhoStore {
         this.livrosQuantidade.push(livro.quantidade)
     })
 
+    @computed get quantidadeLivro(){
+
+        return
+    }
+
     @observable qnt = this.livrosQuantidade.reduce(this.reducer)
     @observable price = this.livrosPreco.reduce(this.reducer)
 
     
 
-    @action increase = () => {
-        this.quantidadeTotal++;
+    @action increase = (idLivro:any) => {
+        const livro = livros.find(book => book.id === idLivro)
+        
+        if (!this.added && livro!.id) {      
+            this.livrosId.push(livro)
+            this.added = true
+        }else{
+            this.added = false
+        }
+        this.quantidadeParcial += 1
+        
+        console.log(this.quantidadeParcial, this.itensCart)
     };
 
-    @action decline = () => {
-        this.quantidadeTotal--;
-        if (this.quantidadeTotal < 0) {
-            this.quantidadeTotal = 0;
+    @action decline = (idLivro:string) => {
+        const livro = livros.find(book => book.id === idLivro)
+      
+        if (!this.added && livro!.id) {      
+            this.livrosId.push(livro)
+            this.added = true
+        }else{
+            this.added = false
+        }
+        this.quantidadeParcial -= 1
+
+        if (this.quantidadeParcial < 0) {
+            this.quantidadeParcial = 0;
             
         }else{
-            this.quantidadeTotal
+            this.quantidadeParcial
+
+            console.log(this.quantidadeParcial)
         }
         
     };
+
+    @action excludeItem = () => {
+        this.quantidadeTotal = 0
+    }
 
     @computed get total(){
         
         return 
     }
+    
 
 }
 

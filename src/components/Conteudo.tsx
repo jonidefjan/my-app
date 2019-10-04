@@ -6,7 +6,7 @@ import Home from './Home'
 import Carrinho from './Carrinho'
 import Livros from './Livros'
 import Cartao from './Card/Card';
-import Livro from './Livro';
+import { Livro } from './Livro';
 import Checkout from './Checkout';
 import MenuPrincipal from './MenuPrincipal';
 
@@ -53,15 +53,17 @@ export default class Conteudo extends React.Component {
 
                         <Content style={{ margin: '24px 16px 0' }}>
                             <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
-                                <Route exact path="/" component={Home} />
-                                <Route path="/livros" component={Livros} />
+                                <Route path="/" exact component={Home} />
+                                <Route path="/livros" exact component={Livros} />
                                 <Route path="/carrinho" component={Carrinho} />
                                 <Route path="/card" component={Cartao} />
                                 <Route path="/checkout" component={Checkout} />
-                                <Route exact path="/livros/:id" component={Livro} />
+
+                                <Route path="/livros/:id" component={Livro}  />
+
                             </div>
                         </Content>
-                        <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+                        <Footer style={{ textAlign: 'center' }}>E-Book Store ©2019 Created by Jonatas Mattos</Footer>
                         
                     </Layout>
                 </Layout>

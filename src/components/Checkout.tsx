@@ -18,11 +18,11 @@ export default class Checkout extends React.Component {
         console.log('onChange:', current);
         this.setState({ current });
         if (current == 0) {
-            <ItensCart/>
+            <ItensCart spanNum={8}/>
         }else if (current == 1) {
-            <ItensCart/>
+            <ItensCart spanNum={8}/>
         }else if (current == 3) {
-            <ItensCart/>
+            <ItensCart spanNum={8}/>
         }
 
     };
@@ -41,8 +41,8 @@ export default class Checkout extends React.Component {
                 <Divider />
 
                 
-                <div>
-                    
+                <div style={{margin:'0 auto', width: '100%'}}>
+                    <ItensCart spanNum={4}/>
                 </div>
                 
 

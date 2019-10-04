@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import { Card, Col, Row } from 'antd';
 import Meta from 'antd/lib/card/Meta';
-import AddButton from './AddButton';
+
 import { livros } from './livrosData';
 import { observer } from 'mobx-react';
 import { observable } from 'mobx';
@@ -27,25 +27,23 @@ export default class Carrinho extends React.Component {
                 <Row gutter={16} >
                     {livros.map(book => {
                         this.livroIds.push(book.id)
-                        console.log(this.livroIds)
-                        return(
-                        <Col key={book.id} id={book.id} span={6}>
-
-                            <Card
-                                hoverable
-                                style={{ width: 200 }}
-                                cover={<img alt={book.titulo} src={book.capa} />}
-                            >
+                        return (
+                            <Col key={book.id} id={book.id} span={6}>
                                 <Link to={`livros/${book.id}`}>
-                                    <Meta title={ book.titulo} description={'R$: '+book.preco.toFixed(2)} />
+                                    <Card
+                                        hoverable
+                                        style={{ width: 200 }}
+                                        cover={<img alt={book.titulo} src={book.capa} />}
+                                    >
+
+                                        <Meta title={book.titulo} />
+                                        <Meta title={book.autor} description={'R$: ' + book.preco.toFixed(2)} />
+                                    </Card>
                                 </Link>
                                 <br />
-                                <AddButton key={book.id}/>
-                            </Card>
-
-                            <br />
-                        </Col>
-                    )})}
+                            </Col>
+                        )
+                    })}
                 </Row>
 
 
@@ -53,11 +51,6 @@ export default class Carrinho extends React.Component {
             </div>
         )
     }
-
-    addToCart = (idLivro: string) => {
-
-        return (null)
-    };
 }
 
 

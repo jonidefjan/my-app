@@ -37,7 +37,7 @@ export default class CartDrawer extends React.Component {
           visible={this.state.visible}
         >
 
-          <ItensCart/>
+          <ItensCart spanNum={16}/>
 
         </Drawer>
       </div>
