@@ -26,7 +26,7 @@ export default class ItensCart extends React.Component<ThisProps> {
                                     hoverable
                                     style={{ width: 200 }}
                                     cover={<img alt={livro.titulo} src={livro.capa} />}
-                                    extra={<Icon type="close" onClick={() => carrinhoStore.excludeItem(livro.id)}/>}
+                                    extra={<Icon type="close" onClick={() => carrinhoStore.excludeItem(livro.id, qtdLivros)}/>}
                                 >
                                     <Link to={`livros/${livro.id}`}>
                                         <Meta title={livro.autor} description={'R$: ' + livro.preco + ' ' + qtdLivros} />

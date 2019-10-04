@@ -12,8 +12,6 @@ class CarrinhoStore {
     @persist @observable quantidadeTotal=0;
     @persist @observable quantidadeParcial=0;
 
-    @persist @observable added=false;
-
     @persist @observable precoTotal:number;
     @persist @observable itensCarrinho = new Array<ItemCarrinho>()
     @persist @observable livro = new Array<Livro>()
@@ -54,12 +52,12 @@ class CarrinhoStore {
             })
 
             if(!!itemCarrinho) {
-                this.quantidadeTotal -= 1
-                itemCarrinho.qtdLivros -= 1
-                
+                this.quantidadeTotal += -1
+                itemCarrinho.qtdLivros += -1
+
                 console.log(itemCarrinho.qtdLivros)
                 if(itemCarrinho.qtdLivros <= 0) {
-                    this.excludeItem(itemCarrinho.livro.id)
+                    this.excludeItem(itemCarrinho.livro.id, itemCarrinho.qtdLivros)
                 }
             } else {
                 alert(`Não foi encontrado no carrinho o livro de ID: ${idLivro}`)
@@ -69,10 +67,15 @@ class CarrinhoStore {
         }
     };
 
-    @action excludeItem = (idLivro:string) => {
+    @action excludeItem = (idLivro:string, qntUni:number) => {
+        if (qntUni > 0) {
+            this.quantidadeTotal -= qntUni
+        }
+        
         this.itensCarrinho = this.itensCarrinho.filter((value) => {
             return idLivro != value.livro.id
         })
+
     }
 
     @action totalNoCart(num:number){
