@@ -1,6 +1,9 @@
-import { action, observable, computed } from 'mobx';
+import { action, observable } from 'mobx';
 import { livros } from '../livrosData'
 import { persist } from 'mobx-persist';
+import { ItemCarrinho } from '../Interfaces/ItemCarrinho';
+import { Livro } from '../Interfaces/Livro';
+
 
 
 
@@ -12,77 +15,68 @@ class CarrinhoStore {
     @persist @observable added=false;
 
     @persist @observable precoTotal:number;
-    @persist @observable livrosId = new Array()
-    @persist @observable itensCart = new Array()
-    @observable livrosAutor = new Array()
-    @observable livrosPreco = new Array()
-    @observable livrosCapa = new Array()
-    @observable livrosDescription = new Array()
-    @observable livrosQuantidade = new Array()
+    @persist @observable itensCarrinho = new Array<ItemCarrinho>()
+    @persist @observable livro = new Array<Livro>()
+    @persist @observable totalLivros = new Array<number>()
 
-    @observable reducer = (accumulator:number, currentValue:number) => accumulator + currentValue;
-    
-    quantidadeId = livros.map(livro =>{
-        this.livrosAutor.push(livro.autor)
-        this.livrosPreco.push(livro.preco)
-        this.livrosCapa.push(livro.capa)
-        this.livrosDescription.push(livro.description)
-        this.livrosQuantidade.push(livro.quantidade)
-    })
-
-    @computed get quantidadeLivro(){
-
-        return
-    }
-
-    @observable qnt = this.livrosQuantidade.reduce(this.reducer)
-    @observable price = this.livrosPreco.reduce(this.reducer)
-
-    
+    @observable reducer = (accumulator:number, currentValue:number) => accumulator + currentValue;    
 
     @action increase = (idLivro:any) => {
+        console.log(idLivro)
         const livro = livros.find(book => book.id === idLivro)
         
-        if (!this.added && livro!.id) {      
-            this.livrosId.push(livro)
-            this.added = true
-        }else{
-            this.added = false
+        if(!!livro) {
+            this.quantidadeTotal += 1
+            const itemCarrinho = this.itensCarrinho.find((value) => {
+                return value.livro.id == idLivro
+            })
+
+            if(!!itemCarrinho) {
+                itemCarrinho.qtdLivros += 1
+                
+                console.log(itemCarrinho.livro.titulo + " " + itemCarrinho.qtdLivros)
+            } else {
+                this.itensCarrinho.push({livro, qtdLivros: 1})
+            }
+        } else {
+            alert(`Não foi encontrado o livro de ID: ${idLivro}`)
         }
-        this.quantidadeParcial += 1
-        
-        console.log(this.quantidadeParcial, this.itensCart)
     };
 
     @action decline = (idLivro:string) => {
         const livro = livros.find(book => book.id === idLivro)
-      
-        if (!this.added && livro!.id) {      
-            this.livrosId.push(livro)
-            this.added = true
-        }else{
-            this.added = false
-        }
-        this.quantidadeParcial -= 1
-
-        if (this.quantidadeParcial < 0) {
-            this.quantidadeParcial = 0;
-            
-        }else{
-            this.quantidadeParcial
-
-            console.log(this.quantidadeParcial)
-        }
         
+
+        if(!!livro) {
+            
+            const itemCarrinho = this.itensCarrinho.find((value) => {
+                return value.livro.id == idLivro
+            })
+
+            if(!!itemCarrinho) {
+                this.quantidadeTotal -= 1
+                itemCarrinho.qtdLivros -= 1
+                
+                console.log(itemCarrinho.qtdLivros)
+                if(itemCarrinho.qtdLivros <= 0) {
+                    this.excludeItem(itemCarrinho.livro.id)
+                }
+            } else {
+                alert(`Não foi encontrado no carrinho o livro de ID: ${idLivro}`)
+            }
+        } else {
+            alert(`Não foi encontrado o livro de ID: ${idLivro}`)
+        }
     };
 
-    @action excludeItem = () => {
-        this.quantidadeTotal = 0
+    @action excludeItem = (idLivro:string) => {
+        this.itensCarrinho = this.itensCarrinho.filter((value) => {
+            return idLivro != value.livro.id
+        })
     }
 
-    @computed get total(){
-        
-        return 
+    @action totalNoCart(num:number){
+        return this.totalLivros.reduce(this.reducer, num)
     }
     
 

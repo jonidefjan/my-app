@@ -3,7 +3,7 @@ import { Icon, Badge, Menu } from 'antd'
 import { Link } from 'react-router-dom'
 import { carrinhoStore } from './store/CarinhoStore'
 import { observer } from 'mobx-react'
-
+ 
 @observer
 export default class MenuPrincipal extends React.Component {
     render() {
@@ -24,7 +24,7 @@ export default class MenuPrincipal extends React.Component {
 
 
                 <Menu.Item key="3">
-                    <Badge count={carrinhoStore.quantidadeParcial} style={{ backgroundColor: '#87d068' }}>
+                    <Badge count={carrinhoStore.quantidadeTotal} style={{ backgroundColor: '#87d068' }}>
                         <Icon type="shopping-cart" />
                     </Badge>
                     <span className="nav-text">Carrinho</span>

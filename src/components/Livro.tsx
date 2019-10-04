@@ -23,7 +23,6 @@ function find(id: string) {
 
 export const Livro = (props: livroProps) => {
     const book = find(props.match.params.id)
-    console.log(props)
     return (
 
         <div style={{ background: '#ECECEC', padding: '30px' }} key={book!.id}>
@@ -55,7 +54,7 @@ export const Livro = (props: livroProps) => {
                     <Card title={book!.titulo} bordered={true}>
                         <Meta title={book!.autor} description={book!.description} />
                         <br/>
-                        <Meta title={'R$: '+book!.preco.toFixed(2)} description={book!.quantidade}/>
+                        <Meta title={'R$: '+book!.preco.toFixed(2)} />
                         <br />
                         <AddButton key={book!.id} idLivro={book!.id}/>
                     </Card>

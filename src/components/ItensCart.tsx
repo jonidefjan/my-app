@@ -5,6 +5,7 @@ import Meta from 'antd/lib/card/Meta'
 import AddButton from './AddButton'
 import { carrinhoStore } from "./store/CarinhoStore";
 import { observer } from 'mobx-react'
+import { ItemCarrinho } from './Interfaces/ItemCarrinho'
 
 type ThisProps = {
     spanNum:number
@@ -16,22 +17,22 @@ export default class ItensCart extends React.Component<ThisProps> {
     render() {
         return (
             <Row gutter={16} justify={"start"} align={"middle"} type={"flex"}>
-                {carrinhoStore.livrosId.map((book: any) => {
-                    
+                {carrinhoStore.itensCarrinho.map((itemCarinho: ItemCarrinho) => {
+                    const {livro, qtdLivros} = itemCarinho
                     return (
-                            <Col key={book.id} span={this.props.spanNum} >
+                            <Col key={livro.id} span={this.props.spanNum} >
                                 <Card
-                                    title={book.titulo}
+                                    title={livro.titulo}
                                     hoverable
                                     style={{ width: 200 }}
-                                    cover={<img alt={book.titulo} src={book.capa} />}
-                                    extra={<Icon type="close" onClick={() => carrinhoStore.excludeItem()}/>}
+                                    cover={<img alt={livro.titulo} src={livro.capa} />}
+                                    extra={<Icon type="close" onClick={() => carrinhoStore.excludeItem(livro.id)}/>}
                                 >
-                                    <Link to={`livros/${book.id}`}>
-                                        <Meta title={book.autor} description={'R$: ' + book.preco + ' ' + book.quantidade} />
+                                    <Link to={`livros/${livro.id}`}>
+                                        <Meta title={livro.autor} description={'R$: ' + livro.preco + ' ' + qtdLivros} />
                                     </Link>
                                     <br />
-                                    <AddButton key={book.id} idLivro={book.id}/>
+                                    <AddButton key={livro.id} idLivro={livro.id}/>
                                 </Card>
                                 <br />
                             </Col>

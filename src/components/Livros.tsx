@@ -5,7 +5,6 @@ import Meta from 'antd/lib/card/Meta';
 
 import { livros } from './livrosData';
 import { observer } from 'mobx-react';
-import { observable } from 'mobx';
 import { Link } from 'react-router-dom';
 
 
@@ -14,8 +13,6 @@ import { Link } from 'react-router-dom';
 
 @observer
 export default class Carrinho extends React.Component {
-
-    @observable livroIds = new Array()
 
 
 
@@ -26,7 +23,6 @@ export default class Carrinho extends React.Component {
 
                 <Row gutter={16} >
                     {livros.map(book => {
-                        this.livroIds.push(book.id)
                         return (
                             <Col key={book.id} id={book.id} span={6}>
                                 <Link to={`livros/${book.id}`}>
