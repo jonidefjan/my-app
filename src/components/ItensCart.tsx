@@ -29,7 +29,8 @@ export default class ItensCart extends React.Component<ThisProps> {
                                     extra={<Icon type="close" onClick={() => carrinhoStore.excludeItem(livro.id, qtdLivros)}/>}
                                 >
                                     <Link to={`livros/${livro.id}`}>
-                                        <Meta title={livro.autor} description={'R$: ' + livro.preco + ' ' + qtdLivros} />
+                                        <Meta title={livro.autor} description={carrinhoStore.parcial(livro.preco, qtdLivros)} />
+                                        <Meta description={`Quantidade: ${qtdLivros}`}/>
                                     </Link>
                                     <br />
                                     <AddButton key={livro.id} idLivro={livro.id}/>

@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Steps, Divider } from 'antd';
 import { any } from 'prop-types';
 import ItensCart from './ItensCart';
+import { Desconto } from './Desconto';
 
 const { Step } = Steps;
 
@@ -11,18 +12,18 @@ const { Step } = Steps;
 export default class Checkout extends React.Component {
     state = {
         current: 0,
-        content: any,
+        content: any
     };
 
     onChange = (current: number) => {
         console.log('onChange:', current);
         this.setState({ current });
         if (current == 0) {
-            <ItensCart spanNum={8}/>
+            <ItensCart spanNum={4}/>
         }else if (current == 1) {
-            <ItensCart spanNum={8}/>
-        }else if (current == 3) {
-            <ItensCart spanNum={8}/>
+            <ItensCart spanNum={4}/>
+        }else if (current == 2) {
+             <ItensCart spanNum={4}/>
         }
 
     };
@@ -43,6 +44,10 @@ export default class Checkout extends React.Component {
                 
                 <div style={{margin:'0 auto', width: '100%'}}>
                     <ItensCart spanNum={4}/>
+                </div>
+
+                <div style={{margin:'0 auto', width: '100%'}}>
+                    <Desconto/>
                 </div>
                 
 

@@ -21,7 +21,7 @@ export default class Carrinho extends React.Component {
 
             <div style={{ background: '#ECECEC', padding: '30px' }}>
 
-                <Row gutter={16} >
+                <Row gutter={16} style={{textAlign:'center'}}>
                     {livros.map(book => {
                         return (
                             <Col key={book.id} id={book.id} span={6}>
